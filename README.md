@@ -2,7 +2,7 @@
 
 > Tic-Tac-Toe Optimal Play Explorer — 部署在 Cloudflare Worker 上的交互式井字棋最优策略可视化应用。
 
-**🌐 在线体验：[https://tic-tac-toe.leidun.pp.ua/](https://tic-tac-toe.leidun.pp.ua/)**
+**🌐 在线体验：[https://tic-tac-toe.leidun.pp.ua](https://tic-tac-toe.leidun.pp.ua)**
 
 ## 概述
 
@@ -35,7 +35,7 @@
           ├─ 查 KV 缓存 → 命中 → 注入数据到 HTML → 返回
           └─ 缓存未命中 → 服务端 Minimax 穷举
                            ├─ 生成完整查找表 (10,956 条目)
-                           ├─ 裁剪至最优路径子集 (4,507 条目，-59%)
+                           ├─ 裁剪至最优路径子集 (3,315 条目，-70%)
                            ├─ 统计合法局面 (5,478 种)
                            ├─ 异步写入 KV
                            └─ 注入数据到 HTML → 返回
@@ -166,8 +166,8 @@ npx wrangler deploy
 | 平局终局 | 16 |
 | 进行中局面 | 4,520 |
 | 完整 Minimax 查找表 | 10,956 条目 |
-| 裁剪后查找表 | 4,507 条目（-59%） |
-| KV 存储大小 | ~90 KB |
+| 裁剪后查找表 | 3,315 条目（-70%） |
+| KV 存储大小 | ~71 KB |
 
 ## 工作原理
 
@@ -175,7 +175,7 @@ npx wrangler deploy
 2. **记忆化**：用 `棋盘状态 + 当前轮次` 作为 key 缓存评估值，避免重复计算
 3. **合法性检验**：遍历 3⁹ = 19,683 种配置，排除 X/O 数量不合理、双方同时三连等非法状态
 4. **最优路径生成**：给定起始局面，每步从所有最优着法中随机选一个，生成带有多样性的最优路径
-5. **最优路径裁剪**：计算完成后，从完整查找表中只保留游戏中实际可达的最优路径状态及其子节点评估值，从 10,956 裁剪至 4,507 条目
+5. **最优路径裁剪**：计算完成后，从完整查找表中只保留游戏中实际可达的最优路径状态及其子节点评估值，从 10,956 裁剪至 3,315 条目
 6. **KV 缓存**：裁剪后的数据持久存储在 KV，后续请求 O(1) 读取
 
 ---
@@ -184,7 +184,7 @@ npx wrangler deploy
 
 > An interactive tic-tac-toe optimal strategy visualization app deployed on Cloudflare Workers.
 
-**🌐 Live Demo: [https://tic-tac-toe.leidun.pp.ua/](https://tic-tac-toe.leidun.pp.ua/)**
+**🌐 Live Demo: [https://tic-tac-toe.leidun.pp.ua](https://tic-tac-toe.leidun.pp.ua)**
 
 ## Overview
 
@@ -217,7 +217,7 @@ Request → Cloudflare Worker
           ├─ Check KV cache → Hit → Inject data into HTML → Return
           └─ Cache miss → Server-side Minimax exhaustive search
                            ├─ Generate complete lookup table (10,956 entries)
-                           ├─ Prune to optimal path subset (4,507 entries, -59%)
+                           ├─ Prune to optimal path subset (3,315 entries, -70%)
                            ├─ Count legal positions (5,478 states)
                            ├─ Async write to KV
                            └─ Inject data into HTML → Return
@@ -348,8 +348,8 @@ If you prefer not to use the command line, you can deploy entirely through the C
 | Draw terminal states | 16 |
 | In-progress states | 4,520 |
 | Full Minimax lookup table | 10,956 entries |
-| Pruned lookup table | 4,507 entries (-59%) |
-| KV storage size | ~90 KB |
+| Pruned lookup table | 3,315 entries (-70%) |
+| KV storage size | ~71 KB |
 
 ## How It Works
 
@@ -357,5 +357,5 @@ If you prefer not to use the command line, you can deploy entirely through the C
 2. **Memoization**: Uses `board state + current turn` as a cache key for evaluation values, avoiding redundant computation
 3. **Legality checking**: Iterates through 3⁹ = 19,683 configurations, filtering out states with invalid X/O counts or simultaneous three-in-a-rows
 4. **Optimal path generation**: Given a starting position, randomly selects among optimal moves at each step, creating diverse optimal paths
-5. **Optimal path pruning**: After full computation, retains only game-reachable optimal path states and their child evaluation values from the complete lookup table, reducing from 10,956 to 4,507 entries
+5. **Optimal path pruning**: After full computation, retains only game-reachable optimal path states and their child evaluation values from the complete lookup table, reducing from 10,956 to 3,315 entries
 6. **KV caching**: Pruned data is persistently stored in KV; subsequent requests are O(1) reads
