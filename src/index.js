@@ -213,6 +213,7 @@ function buildHTML(data) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>井字棋 · 最佳策略探索器</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a0a2e'/><line x1='22' y1='4' x2='22' y2='60' stroke='%23333' stroke-width='2.5'/><line x1='42' y1='4' x2='42' y2='60' stroke='%23333' stroke-width='2.5'/><line x1='4' y1='22' x2='60' y2='22' stroke='%23333' stroke-width='2.5'/><line x1='4' y1='42' x2='60' y2='42' stroke='%23333' stroke-width='2.5'/><line x1='7' y1='7' x2='17' y2='17' stroke='%2300d4ff' stroke-width='3.5' stroke-linecap='round'/><line x1='17' y1='7' x2='7' y2='17' stroke='%2300d4ff' stroke-width='3.5' stroke-linecap='round'/><circle cx='52' cy='52' r='7' fill='none' stroke='%23ff6b9d' stroke-width='3.5'/><line x1='27' y1='27' x2='37' y2='37' stroke='%2300d4ff' stroke-width='3.5' stroke-linecap='round'/><line x1='37' y1='27' x2='27' y2='37' stroke='%2300d4ff' stroke-width='3.5' stroke-linecap='round'/><circle cx='12' cy='52' r='7' fill='none' stroke='%23ff6b9d' stroke-width='3.5'/></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
