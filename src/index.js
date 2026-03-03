@@ -342,7 +342,7 @@ h1{
 <p class="subtitle">穷举所有合法局面，感受最优博弈之美</p>
 
 <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0 6px;flex-wrap:wrap;">
-  <img src="https://avatars.githubusercontent.com/u/36781453" alt="avatar" style="width:28px;height:28px;border-radius:50%;vertical-align:middle;">
+  <img src="https://file.leidun.pp.ua/leidun.png" alt="avatar" style="width:28px;height:28px;border-radius:50%;vertical-align:middle;">
   <a href="https://github.com/hohouman/tic-tac-toe" target="_blank" rel="noopener" style="color:#58a6ff;text-decoration:none;font-size:.9rem;">⭐ GitHub Open Source</a>
   <span style="color:#555;font-size:.8rem;">|</span>
   <a href="https://leidun.pp.ua/" target="_blank" rel="noopener" style="color:#58a6ff;text-decoration:none;font-size:.9rem;">📝 My Blog</a>
